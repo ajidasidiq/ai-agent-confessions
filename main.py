@@ -14,9 +14,12 @@ CONFESSION = (
 
 
 def main() -> None:
+    line = CONFESSION.strip()
+    if not line or len(line) > 200 or "\n" in line:
+        raise SystemExit("confession must be one line of 1-200 characters")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
-        f.write(CONFESSION + "\n")
+        f.write(line + "\n")
 
 
 if __name__ == "__main__":
